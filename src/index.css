@@ -49,6 +49,7 @@ img {
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
+    border-radius: inherit;
 }
 
 body {
@@ -75,6 +76,8 @@ button, .btn {
     outline: none;
     cursor: pointer;
     transition: var(--transition);
+    font-size: .85rem;
+    font-weight: 700;
 }
 button:active , .btn:active {
     transform: scale(.85);
@@ -85,13 +88,19 @@ button:active , .btn:active {
     max-width: 1200px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 /* --- class helpers --- */
 .md { /* only view in > 768px*/
     display: none;
 }
-
+.glass-lg, .glass-md, .glass-sm {
+    background: var(--white-to-glass);
+}
+.glass-md {-webkit-backdrop-filter: blur(var(--blur-md));backdrop-filter: blur(var(--blur-md));}
+.glass-sm {-webkit-backdrop-filter: blur(var(--blur-sm));backdrop-filter: blur(var(--blur-sm));}
+.glass-lg {-webkit-backdrop-filter: blur(var(--blur-lg));backdrop-filter: blur(var(--blur-lg));}
 /* --- Navbar ---*/
 
 .Navbar {
@@ -198,7 +207,7 @@ button:active , .btn:active {
     box-shadow: 0 8px 35px rgba(42, 42, 42, 0.16);
 }
 
-/* === PROFILE === */
+/* ============= PROFILE ============= */
 .Profile {
     width: 100%;
     height: 100%;
@@ -232,7 +241,7 @@ button:active , .btn:active {
     z-index: 10;
 }
 
-.Profile-edit-mobile {
+.btn-icon {
     aspect-ratio: 1/1;
     height: 3rem;
     position: absolute;
@@ -294,6 +303,154 @@ button:active , .btn:active {
     display: none;
 }
 
+/* ============= EDIT ACCOUNT ============= */
+.btn-back {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: .5rem 1rem;
+    display: flex;
+    color: var(--black);
+    border-radius: .5rem;
+    z-index: 100;
+}
+/*EDIT AVATAR*/
+.EditAccount {
+    padding: 1rem;
+}
+.EditAccount, .EditAccount-avatar, .EditAccount-form {
+    width: 100%;
+}
+.EditAccount-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.EditAccount-form {
+    display: flex;
+    justify-content: center;
+}
+
+.Avatar {
+    position: relative;
+    display: flex;
+    width: 130px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
+}
+.Avatar-edit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+/* FORM */
+
+.Form {
+    width: 100%;
+    margin: 1.75rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    max-width: 400px;
+}
+
+.Form-field {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+.Form-label {
+    font-weight: 700;
+    color: var(--black);
+    font-size: .85rem;
+}
+
+.Form-input {
+    width: 100%;
+    border: 2px solid var(--gray);
+    padding: .75rem;
+    font-size: .9rem;
+    outline: none;
+    border-radius: .5rem;
+    transition: var(--transition);
+    background: var(--bg-input);
+    color: var(--black);
+}
+
+.Form-input::-moz-placeholder {
+    color: var(--gray);
+}
+
+.Form-input:-ms-input-placeholder {
+    color: var(--gray);
+}
+
+.Form-input::placeholder {
+    color: var(--gray);
+}
+
+.Form-input:focus {
+    border-color: var(--primary);
+    font-weight: 700;
+}
+
+.Form-input:focus+.Form-label {
+    color: var(--primary);
+}
+
+.Form-aside {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Form-checkbox {
+    accent-color: var(--primary)
+}
+
+.Form-button {
+    margin: .5rem 0;
+    background: var(--main-gradient);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: .75rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 10rem;
+    transition: var(--transition);
+    box-shadow: 0 1rem 2rem -0.5rem var(--primary-75);
+}
+
+.Form-button:hover {
+    box-shadow: 0 .5rem 2rem -0.75rem var(--primary-75);
+}
+
+.Form-button:active {
+    transform: scale(.85);
+}
+
+.Form-textarea {resize: none;
+}
+
+/* LINKS */
+.Link {
+    color: var(--black);
+    transition: var(--transition);
+    font-size: .8rem;
+}
+
+.small-text .Link {
+    color: var(--primary);
+}
+
+.Link:hover {
+    color: var(--primary);
+}
 
 /* ==== TABLET ==== */
 @media (min-width: 768px) {
@@ -307,6 +464,13 @@ button:active , .btn:active {
         left: 0;
     }
 
+    /* --- FORM --- */
+    .Form-button-edit {
+        max-width: 200px;
+        border-radius: .65rem;
+    }
+
+    /* ============= PROFILE ============= */
     /* === PROFILE HEADER === */
     .Profile-edit-mobile {
         display: none;
@@ -407,8 +571,9 @@ button:active , .btn:active {
 
 }
 
-/* DESKTOP */
+/* ==== DESKTOP ==== */
 @media (min-width: 1024px) {
+    /* ============= PROFILE ============= */
     .Profile-header {
         aspect-ratio: 6/1;
     }

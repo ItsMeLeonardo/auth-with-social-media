@@ -12,7 +12,7 @@ function Login() {
           <li className="Social-item twitter">
             <i className="gg-instagram"></i>
           </li>
-          <li className="Social-item linkedinf">
+          <li className="Social-item google">
             <i className="gg-google"></i>
           </li>
         </ul>
