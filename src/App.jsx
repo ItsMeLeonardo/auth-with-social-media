@@ -17,6 +17,7 @@ function App() {
           </li>
           <li className="Navbar-item profile">
             <a href="#" className="Navbar-link">
+              <span className="md">username</span>
               <img
                 src="https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                 alt="name avatar"

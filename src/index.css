@@ -74,6 +74,10 @@ button, .btn {
     border: none;
     outline: none;
     cursor: pointer;
+    transition: var(--transition);
+}
+button:active , .btn:active {
+    transform: scale(.85);
 }
 
 #root {
@@ -81,6 +85,11 @@ button, .btn {
     max-width: 1200px;
     display: flex;
     justify-content: center;
+}
+
+/* --- class helpers --- */
+.md { /* only view in > 768px*/
+    display: none;
 }
 
 /* --- Navbar ---*/
@@ -126,12 +135,13 @@ button, .btn {
     }
 
 .Navbar-link {
-    width: 100%;
     height: 100%;
-    border-radius: inherit;
-    overflow: hidden;
-    display: block;
+    border-radius: inherit
 }
+
+.Navbar-link img {
+        border-radius: inherit;
+    }
 
 .Tooltip {
     position: absolute;
@@ -150,9 +160,28 @@ button, .btn {
     transition: opacity var(--transition);
 }
 
-.Navbar-item.profile:hover .Tooltip {
-    opacity: 1;
+.Navbar-item.profile {
+    aspect-ratio: auto
 }
+
+.Navbar-item.profile .Navbar-link {
+        display: flex;
+        gap: 1rem;
+        align-items: center
+    }
+
+.Navbar-item.profile .Navbar-link span {
+            color: var(--white);
+        }
+
+.Navbar-item.profile .Navbar-link img {
+            height: 2rem;
+            aspect-ratio: 1/1;
+        }
+
+.Navbar-item.profile:hover .Tooltip {
+        opacity: 1;
+    }
 
 .Tooltip-button {
     font-size: .85rem;
@@ -268,6 +297,16 @@ button, .btn {
 
 /* ==== TABLET ==== */
 @media (min-width: 768px) {
+    /* --- class helpers --- */
+    .md {
+        display: inherit;
+    }
+
+    /* --- Navbar ---*/
+    .Tooltip {
+        left: 0;
+    }
+
     /* === PROFILE HEADER === */
     .Profile-edit-mobile {
         display: none;
@@ -328,20 +367,24 @@ button, .btn {
         justify-content: space-between;
         align-items: center
     }
+
         .Profile-edit .Profile-info-title {
             width: auto;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
         }
+
         .Profile-edit h2 {
             font-size: 1rem;
         }
+
         .Profile-edit p {
             color: var(--black);
             opacity: .5;
             font-size: .85rem;
         }
+
     .Profile-edit-btn {
         font-size: 1rem;
         padding: .5rem 1.5rem;
@@ -351,11 +394,13 @@ button, .btn {
         color: var(--primary);
         transition: var(--transition);
     }
+
     .Profile-edit-btn:hover {
         background: var(--primary);
         color: var(--white);
         box-shadow: 0 8px 35px rgba(42, 42, 42, 0.16);
     }
+
     .Profile-edit-btn:active {
         box-shadow: none;
     }
@@ -367,6 +412,7 @@ button, .btn {
     .Profile-header {
         aspect-ratio: 6/1;
     }
+
     .Profile-header:before, .Profile-header:after {
         z-index: -1;
         position: absolute;
@@ -380,6 +426,7 @@ button, .btn {
         box-shadow: 0 35px 75px var(--black);
         transform: rotate(-8deg);
     }
+
     .Profile-header:after {
         transform: rotate(8deg);
         right: 10px;
