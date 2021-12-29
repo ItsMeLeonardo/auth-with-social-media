@@ -3,12 +3,10 @@ import "./App.css";
 function App() {
   return (
     <>
-      <navbar className="Navbar">
+      <nav className="Navbar">
         <ul className="Navbar-list">
           <li className="Navbar-item logo">
-            <a href="#" className="Navbar-link">
-              /*LOGO*/
-            </a>
+            <a href="#" className="Navbar-link"></a>
           </li>
           <li className="Navbar-item section-name">
             <a href="#" className="Navbar-link">
@@ -17,11 +15,14 @@ function App() {
           </li>
           <li className="Navbar-item profile">
             <a href="#" className="Navbar-link">
-              /*Avatar + tooltip*/
+              <img
+                src="https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt="name avatar"
+              />
             </a>
           </li>
         </ul>
-      </navbar>
+      </nav>
 
       <main className="Profile">
         <section className="Profile-header">
@@ -31,8 +32,8 @@ function App() {
               alt="name avatar"
             />
             <figcaption className="Profile-avatar-name">Name</figcaption>
-            <button className="Profile-edit-mobile">/*ICON 🖊*/</button>
           </figure>
+          <button className="btn Profile-edit-mobile">🖊</button>
         </section>
         <section className="Profile-info">
           <ul className="Profile-info-list">
