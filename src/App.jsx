@@ -46,10 +46,8 @@ function App() {
           <ul className="Profile-info-list">
             <li className="Profile-info-item Profile-edit">
               <header className="Profile-info-title">
-                <h2 className="Profile-edit-title">PROFILE</h2>
-                <p className="text-small">
-                  Some info may be visible to other people
-                </p>
+                <h2>PROFILE</h2>
+                <p>Some info may be visible to other people</p>
               </header>
               <button className="Profile-edit-btn">Edit</button>
             </li>

@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+@import url('https://css.gg/facebook.css');
+@import url('https://css.gg/instagram.css');
+@import url('https://css.gg/google.css');
+
+:root {
+    --bg: #ededed;
+    --card-bg: #f5f5f5;
+    --black: #181818;
+    --primary: #d128f5;
+    --secondary: hsl(269, 72%, 39%);
+    --gray: #d1d1d1;
+    --shadow-color: rgba(189, 189, 189, 0.25);
+    --white: #fdfdfd;
+    --bg-input: #fdfdfd;
+    --main-gradient: linear-gradient(135deg, hsla(289, 91%, 56%, 1) 0%, hsla(269, 92%, 52%, 1) 100%, hsla(269, 72%, 39%, 1) 100%);
+    --primary-75: rgba(209 ,40 ,245, .75);
+    --transition: .35s ease-in-out;
+}
+
+.dark-mode {
+    --bg: #232e41;
+    --card-bg: #2f3b52;
+    --black: #ededed;
+    --primary: #d128f5;
+    --secondary: #611cab;
+    --gray: #37435a;
+    --shadow-color: rgba(12, 12, 12, 0.25);
+    --white: #232e41;
+    --bg-input: #232e41;
+}
+
+.dark {
+    appearance: none;
+    aspect-ratio: 1/1;
+    height: 2.5rem;
+    background: var(--primary);
+    position: absolute;
+    z-index: 1;
+    top: 2rem;
+    left: 4rem;
+    border-radius: 50%;
+    box-shadow: 0 1rem 2rem -0.5rem var(--primary);
+    transition: var(--transition);
+}
+
+.dark:hover {
+    box-shadow: 0 1rem 2rem -.6rem var(--primary);
+}
+
+.dark:active {
+    transform: scale(.85);
+}
+
+*,
+::after,
+::before {
+    font-family: 'Space Grotesk', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    background: var(--bg);
+}
+
+::selection {
+    color: var(--white);
+    background: var(--primary);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gap-1 {
+    gap: .5rem;
+}
+
+.small-text {
+    font-size: .85rem;
+    color: var(--black)
+}
+
+.Login {
+    min-width: 320;
+    background: var(--card-bg);
+    box-shadow: .25rem .5rem 5rem var(--shadow-color);
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.Login-row,
+.Login-title {
+    width: 100%;
+    text-align: center;
+}
+
+.Login-title {
+    text-align: center;
+    position: relative;
+    color: var(--black);
+}
+
+.Login-title::after {
+    content: '';
+    --w: 20%;
+    width: var(--w);
+    left: calc(50% - var(--w) / 2);
+    bottom: -.75rem;
+    height: .45rem;
+    position: absolute;
+    background: var(--main-gradient);
+}
+
+.Social-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    margin: 1.5rem 0 .5rem 0;
+}
+
+.Social-item {
+    padding: .75rem;
+    background: var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition) box-shadow, var(--transition) background;
+}
+
+.Social-item i {
+    color: var(--black);
+}
+
+.Social-item:hover {
+    box-shadow: .25rem .5rem 1rem var(--shadow-color)
+}
+
+.Form {
+    width: 100%;
+    margin: 1.75rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.Form-field {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+.Form-label {
+    font-weight: 700;
+    color: var(--black);
+    font-size: .85rem;
+}
+
+.Form-input {
+    width: 100%;
+    border: 2px solid var(--gray);
+    padding: .75rem;
+    font-size: .9rem;
+    outline: none;
+    border-radius: .5rem;
+    transition: var(--transition);
+    background: var(--bg-input);
+    color: var(--black);
+}
+
+.Form-input::placeholder {
+    color: var(--gray);
+}
+
+.Form-input:focus {
+    border-color: var(--primary);
+    font-weight: 700;
+}
+
+.Form-input:focus+.Form-label {
+    color: var(--primary);
+}
+
+.Form-aside {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Form-checkbox {
+    accent-color: var(--primary)
+}
+
+.Form-button {
+    margin: .5rem 0;
+    background: var(--main-gradient);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: .75rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 10rem;
+    transition: var(--transition);
+    box-shadow: 0 1rem 2rem -0.5rem var(--primary-75);
+}
+
+.Form-button:hover {
+    box-shadow: 0 .5rem 2rem -0.75rem var(--primary-75);
+}
+
+.Form-button:active {
+    transform: scale(.85);
+}
+
+.Link {
+    color: var(--black);
+    transition: var(--transition);
+    font-size: .8rem;
+}
+
+.small-text .Link {
+    color: var(--primary);
+}
+
+.Link:hover {
+    color: var(--primary);
+}
