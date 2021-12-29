@@ -6,11 +6,13 @@ function App() {
       <nav className="Navbar">
         <ul className="Navbar-list">
           <li className="Navbar-item logo">
-            <a href="#" className="Navbar-link"></a>
+            <a href="#" className="Navbar-link">
+              <i hidden> REMOVE THIS</i>
+            </a>
           </li>
           <li className="Navbar-item section-name">
             <a href="#" className="Navbar-link">
-              /*HOME*/
+              PROFILE
             </a>
           </li>
           <li className="Navbar-item profile">
@@ -35,8 +37,18 @@ function App() {
           </figure>
           <button className="btn Profile-edit-mobile">🖊</button>
         </section>
+
         <section className="Profile-info">
           <ul className="Profile-info-list">
+            <li className="Profile-info-item Profile-edit">
+              <header className="Profile-info-title">
+                <h2 className="Profile-edit-title">PROFILE</h2>
+                <p className="text-small">
+                  Some info may be visible to other people
+                </p>
+              </header>
+              <button className="Profile-edit-btn">Edit</button>
+            </li>
             <li className="Profile-info-item">
               <header className="Profile-info-title">username</header>
               <p className="Profile-info-data">Anna 2022</p>
