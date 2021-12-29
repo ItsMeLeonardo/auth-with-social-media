@@ -68,7 +68,7 @@ body {
     background: var(--primary);
 }
 
-.btn {
+button, .btn {
     border: none;
     outline: none;
     cursor: pointer;
@@ -95,6 +95,10 @@ body {
     padding: 0 1rem;
 }
 
+.Navbar-item {
+    position: relative;
+}
+
 .Navbar-item.logo, .Navbar-item.profile {
     height: 2rem;
     aspect-ratio: 1/1;
@@ -117,6 +121,42 @@ body {
     border-radius: inherit;
     overflow: hidden;
     display: block;
+}
+
+.Tooltip {
+    position: absolute;
+    aspect-ratio: 2/1;
+    width: 130px;
+    padding: 1rem;
+    left: -6rem;
+    bottom: -7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--white);
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.Navbar-item.profile:hover .Tooltip {
+    opacity: 1;
+}
+
+.Tooltip-button {
+    font-size: .85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .35rem .75rem;
+    background: var(--white);
+    transition: box-shadow var(--transition);
+    border-radius: .5rem;
+}
+
+.Tooltip-button:hover {
+    box-shadow: 0 8px 35px rgba(42, 42, 42, 0.16);
 }
 
 /* === PROFILE === */
@@ -172,9 +212,11 @@ body {
 .Profile-info, .Profile-info-list {
     width: 100%;
 }
+
 .Profile-info {
     margin-top: 2rem;
 }
+
 .Profile-info-list {
     display: flex;
     justify-content: space-between;
@@ -183,6 +225,7 @@ body {
     padding: 1rem;
     gap: 1rem;
 }
+
 .Profile-info-item {
     display: flex;
     justify-content: center;
@@ -194,10 +237,12 @@ body {
     background: var(--white);
     gap: .25rem;
 }
+
 .Profile-info-title {
     font-weight: 700;
     color: var(--primary);
 }
+
 .Profile-info-data {
     color: var(--black);
     font-size: .85rem;

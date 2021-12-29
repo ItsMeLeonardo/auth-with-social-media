@@ -22,6 +22,10 @@ function App() {
                 alt="name avatar"
               />
             </a>
+            <aside className="Tooltip">
+              <button className="Tooltip-button">Account</button>
+              <button className="Tooltip-button">Logout</button>
+            </aside>
           </li>
         </ul>
       </nav>
