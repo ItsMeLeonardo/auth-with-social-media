@@ -1,51 +1,21 @@
 import { Link } from "react-router-dom";
 
 import "./styles.css";
+import FormLayout from "../../components/Form/FormLayout";
+import FormField from "../../components/Form/FormField";
 
 function Login() {
   return (
-    <main className="Login">
-      <h1 className="Login-title">Sign up</h1>
-      <section className="Login-row">
-        <ul className="Social-content">
-          <li className="Social-item facebook">
-            <i className="gg-facebook"></i>
-          </li>
-          <li className="Social-item twitter">
-            <i className="gg-instagram"></i>
-          </li>
-          <li className="Social-item google">
-            <i className="gg-google"></i>
-          </li>
-        </ul>
-      </section>
-      <aside className="small-text">or use your email</aside>
+    <FormLayout title="Sign up">
       <section className="Login-row">
         <form className="Form">
-          <div className="Form-field">
-            <input
-              className="Form-input"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-            />
-            <label htmlFor="email" className="Form-label">
-              Email
-            </label>
-          </div>
-          <div className="Form-field">
-            <input
-              className="Form-input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-            />
-            <label htmlFor="password" className="Form-label">
-              password
-            </label>
-          </div>
+          <FormField
+            type="email"
+            placeholder="example@gmail.com"
+            label="Email"
+          />
+          <FormField type="password" placeholder="********" label="Password" />
+
           <div className="Form-aside">
             <label className="Form-label flex-center gap-1" htmlFor="remenber">
               <input
@@ -60,9 +30,9 @@ function Login() {
               Forgot Password?
             </a>
           </div>
-          <div className="Form-field">
-            <button className="Form-button">Submit</button>
-          </div>
+
+          <FormField type="submit" label="Submit" />
+
           <div className="Form-aside">
             <a href="#" className="Form-label Link">
               Privacity Policy
@@ -73,13 +43,14 @@ function Login() {
           </div>
         </form>
       </section>
+
       <aside className="small-text">
         No yet a member?{" "}
         <Link to="/register" className="Link">
           Register
         </Link>
       </aside>
-    </main>
+    </FormLayout>
   );
 }
 
