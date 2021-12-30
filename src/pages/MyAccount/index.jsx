@@ -1,3 +1,6 @@
+import ProfileItem from "../../components/ProfileItem";
+import { Link } from "react-router-dom";
+
 function MyAccount() {
   return (
     <main className="Profile">
@@ -9,7 +12,9 @@ function MyAccount() {
           />
           <figcaption className="Profile-avatar-name">Name</figcaption>
         </figure>
-        <button className="btn btn-icon">🖊</button>
+        <Link to="/profile/edit" className="Profile-edit-mobile">
+          <button className="btn btn-icon">🖊</button>
+        </Link>
       </section>
 
       <section className="Profile-info">
@@ -19,20 +24,15 @@ function MyAccount() {
               <h2>PROFILE</h2>
               <p>Some info may be visible to other people</p>
             </header>
-            <button className="Profile-edit-btn">Edit</button>
+            <Link to="/profile/edit">
+              <button className="Profile-edit-btn">Edit</button>
+            </Link>
           </li>
-          <li className="Profile-info-item">
-            <header className="Profile-info-title">username</header>
-            <p className="Profile-info-data">Anna 2022</p>
-          </li>
-          <li className="Profile-info-item">
-            <header className="Profile-info-title">Name</header>
-            <p className="Profile-info-data">Anna Doe</p>
-          </li>
-          <li className="Profile-info-item">
-            <header className="Profile-info-title">email</header>
-            <p className="Profile-info-data">Anna@gmail.com </p>
-          </li>
+          <ProfileItem title="Username" data="Anna 2022" />
+          <ProfileItem title="Full name" data="Anna Doe" />
+          <ProfileItem title="Email" data="Anna@gmail.com" />
+          <ProfileItem title="Username" data="Anna 2022" />
+          <ProfileItem title="Password" data="********" />
         </ul>
       </section>
     </main>

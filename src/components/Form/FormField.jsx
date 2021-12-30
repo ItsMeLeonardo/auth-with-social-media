@@ -9,6 +9,23 @@ function FormField({ type, placeholder, label = "" } = {}) {
     );
   }
 
+  if (type === "textarea") {
+    return (
+      <div className="Form-field">
+        <textarea
+          name={label}
+          id={label}
+          cols="30"
+          rows="10"
+          className="Form-input Form-textarea"
+        />
+        <label className="Form-label" htmlFor={label}>
+          {label}
+        </label>
+      </div>
+    );
+  }
+
   return (
     <div className="Form-field">
       <input
