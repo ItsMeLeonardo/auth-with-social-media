@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 
-import "./styles.css";
-
-function Login() {
+function Register() {
   return (
     <main className="Login">
-      <h1 className="Login-title">Sign up</h1>
+      <h1 className="Login-title">Sign in</h1>
       <section className="Login-row">
         <ul className="Social-content">
           <li className="Social-item facebook">
@@ -22,6 +20,30 @@ function Login() {
       <aside className="small-text">or use your email</aside>
       <section className="Login-row">
         <form className="Form">
+          <div className="Form-field">
+            <input
+              className="Form-input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full name"
+            />
+            <label htmlFor="name" className="Form-label">
+              Full name
+            </label>
+          </div>
+          <div className="Form-field">
+            <input
+              className="Form-input"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+            />
+            <label htmlFor="username" className="Form-label">
+              Username
+            </label>
+          </div>
           <div className="Form-field">
             <input
               className="Form-input"
@@ -74,13 +96,13 @@ function Login() {
         </form>
       </section>
       <aside className="small-text">
-        No yet a member?{" "}
-        <Link to="/register" className="Link">
-          Register
+        Already a member?{" "}
+        <Link to="/login" className="Link">
+          Login
         </Link>
       </aside>
     </main>
   );
 }
 
-export default Login;
+export default Register;

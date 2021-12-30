@@ -1,9 +1,7 @@
-import "./App.css";
-import EditAccount from "./pages/EditAccount";
-import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 function App() {
-  return <EditAccount />;
+  return <Home />;
 }
 
 export default App;
