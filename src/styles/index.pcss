@@ -130,7 +130,11 @@ button:active , .btn:active {
 }
 
 .Navbar-item.logo {
-    background: var(--main-gradient);
+    width: 10%;
+    & .Navbar-link {
+        width: 2rem;
+        background: var(--main-gradient)
+    }
 }
 
 .Navbar-item.section-name {
@@ -174,7 +178,7 @@ button:active , .btn:active {
         display: flex;
         gap: 1rem;
         align-items: center;
-        & span {
+        & figcaption {
             color: var(--white);
         }
 
@@ -314,6 +318,7 @@ button:active , .btn:active {
 }
 /*EDIT AVATAR*/
 .EditAccount {
+    margin-top: 60px;
     padding: 1rem;
     min-height: 100vh;
 }

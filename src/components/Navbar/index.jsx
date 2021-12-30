@@ -1,36 +1,28 @@
 import { Link } from "react-router-dom";
 import "../../styles/index.pcss";
+import NavbarOptions from "../NavbarOptions";
 
 function Navbar() {
   return (
     <nav className="Navbar">
       <ul className="Navbar-list">
-        <li className="Navbar-item logo">
-          <a href="#" className="Navbar-link">
+        <Link to="/" className="Navbar-item logo">
+          <li className="Navbar-link">
             <i hidden> REMOVE THIS</i>
-          </a>
-        </li>
+          </li>
+        </Link>
         <li className="Navbar-item section-name">
-          <a href="#" className="Navbar-link">
-            PROFILE
-          </a>
+          <header className="Navbar-link">PROFILE</header>
         </li>
         <li className="Navbar-item profile">
-          <a href="#" className="Navbar-link">
-            <span className="md">username</span>
+          <figure className="Navbar-link">
+            <figcaption className="md">username</figcaption>
             <img
               src="https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
               alt="name avatar"
             />
-          </a>
-          <aside className="Tooltip">
-            <Link to="/profile">
-              <button className="Tooltip-button">Account</button>
-            </Link>
-            <Link to="/login">
-              <button className="Tooltip-button">Logout</button>
-            </Link>
-          </aside>
+          </figure>
+          <NavbarOptions userIsAuth />
         </li>
       </ul>
     </nav>

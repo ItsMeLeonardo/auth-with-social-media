@@ -4,16 +4,19 @@ import Register from "../pages/Register";
 import App from "../App";
 import MyAccount from "../pages/MyAccount";
 import EditAccount from "../pages/EditAccount";
+import Home from "../pages/Home";
 
 function RouterConfig() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="profile" element={<MyAccount />} />
+          <Route path="profile/edit" element={<EditAccount />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<MyAccount />} />
-        <Route path="profile/edit" element={<EditAccount />} />
       </Routes>
     </BrowserRouter>
   );

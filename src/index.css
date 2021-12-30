@@ -89,6 +89,8 @@ button:active , .btn:active {
     display: flex;
     justify-content: center;
     position: relative;
+    min-height: 100vh;
+    align-items: center;
 }
 
 /* --- class helpers --- */
@@ -101,8 +103,8 @@ button:active , .btn:active {
 .glass-md {-webkit-backdrop-filter: blur(var(--blur-md));backdrop-filter: blur(var(--blur-md));}
 .glass-sm {-webkit-backdrop-filter: blur(var(--blur-sm));backdrop-filter: blur(var(--blur-sm));}
 .glass-lg {-webkit-backdrop-filter: blur(var(--blur-lg));backdrop-filter: blur(var(--blur-lg));}
-/* --- Navbar ---*/
 
+/* --- Navbar ---*/
 .Navbar {
     width: 100%;
     height: 60px;
@@ -112,6 +114,7 @@ button:active , .btn:active {
     position: fixed;
     z-index: 100;
     max-width: 1200px;
+    top: 0;
 }
 
 .Navbar-list {
@@ -134,8 +137,13 @@ button:active , .btn:active {
 }
 
 .Navbar-item.logo {
-    background: var(--main-gradient);
+    width: 10%
 }
+
+.Navbar-item.logo .Navbar-link {
+        width: 2rem;
+        background: var(--main-gradient)
+    }
 
 .Navbar-item.section-name .Navbar-link {
         color: var(--white);
@@ -211,6 +219,7 @@ button:active , .btn:active {
 .Profile {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
 }
 
 /* === PROFILE IMG === */
@@ -316,7 +325,9 @@ button:active , .btn:active {
 }
 /*EDIT AVATAR*/
 .EditAccount {
+    margin-top: 60px;
     padding: 1rem;
+    min-height: 100vh;
 }
 .EditAccount, .EditAccount-avatar, .EditAccount-form {
     width: 100%;
