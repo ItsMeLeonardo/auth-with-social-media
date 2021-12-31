@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap');
 
 :root {
     --primary: #d128f5;
@@ -19,6 +19,8 @@
     --blur-lg: 2rem;
     --blur-md: 1rem;
     --blur-sm: .5rem;
+
+    --max-w: 1200px;
 }
 
 .dark-mode {
@@ -36,7 +38,7 @@
 *,
 ::after,
 ::before {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -73,16 +75,16 @@ button, .btn {
     font-size: .85rem;
     font-weight: 700;
 }
-button:active , .btn:active {
+
+button:active, .btn:active {
     transform: scale(.85);
 }
 
 #root {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--max-w);
     display: flex;
     justify-content: center;
-    position: relative;
     min-height: 100vh;
     align-items: center;
 }
@@ -91,12 +93,22 @@ button:active , .btn:active {
 .md { /* only view in > 768px*/
     display: none;
 }
+
 .glass-lg, .glass-md, .glass-sm {
     background: var(--white-to-glass);
 }
-.glass-md {backdrop-filter: blur(var(--blur-md));}
-.glass-sm {backdrop-filter: blur(var(--blur-sm));}
-.glass-lg {backdrop-filter: blur(var(--blur-lg));}
+
+.glass-md {
+    backdrop-filter: blur(var(--blur-md));
+}
+
+.glass-sm {
+    backdrop-filter: blur(var(--blur-sm));
+}
+
+.glass-lg {
+    backdrop-filter: blur(var(--blur-lg));
+}
 
 /* --- Navbar ---*/
 .Navbar {
@@ -106,7 +118,7 @@ button:active , .btn:active {
     backdrop-filter: blur(var(--blur-lg));
     position: fixed;
     z-index: 100;
-    max-width: 1200px;
+    max-width: var(--max-w);;
     top: 0;
 }
 
@@ -131,6 +143,7 @@ button:active , .btn:active {
 
 .Navbar-item.logo {
     width: 10%;
+
     & .Navbar-link {
         width: 2rem;
         background: var(--main-gradient)
@@ -169,6 +182,7 @@ button:active , .btn:active {
     border-radius: .5rem;
     opacity: 0;
     transition: opacity var(--transition);
+    pointer-events: none;
 }
 
 .Navbar-item.profile {
@@ -178,6 +192,7 @@ button:active , .btn:active {
         display: flex;
         gap: 1rem;
         align-items: center;
+
         & figcaption {
             color: var(--white);
         }
@@ -190,6 +205,7 @@ button:active , .btn:active {
 
     &:hover .Tooltip {
         opacity: 1;
+        pointer-events: auto;
     }
 }
 
@@ -316,20 +332,24 @@ button:active , .btn:active {
     border-radius: .5rem;
     z-index: 100;
 }
+
 /*EDIT AVATAR*/
 .EditAccount {
     margin-top: 60px;
     padding: 1rem;
     min-height: 100vh;
 }
+
 .EditAccount, .EditAccount-avatar, .EditAccount-form {
     width: 100%;
 }
+
 .EditAccount-avatar {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .EditAccount-form {
     display: flex;
     justify-content: center;
@@ -343,6 +363,7 @@ button:active , .btn:active {
     border-radius: 50%;
     box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
+
 .Avatar-edit {
     position: absolute;
     right: 0;
@@ -383,6 +404,7 @@ button:active , .btn:active {
     transition: var(--transition);
     background: var(--bg-input);
     color: var(--black);
+    font-weight: 400;
 }
 
 .Form-input::placeholder {
@@ -394,7 +416,7 @@ button:active , .btn:active {
     font-weight: 700;
 }
 
-.Form-input:focus+.Form-label {
+.Form-input:focus + .Form-label {
     color: var(--primary);
 }
 
@@ -430,7 +452,8 @@ button:active , .btn:active {
     transform: scale(.85);
 }
 
-.Form-textarea {resize: none;
+.Form-textarea {
+    resize: none;
 }
 
 /* LINKS */
@@ -448,6 +471,119 @@ button:active , .btn:active {
     color: var(--primary);
 }
 
+/*===== HOME =====*/
+
+.Home {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 70px;
+}
+
+.Home::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(180deg, rgba(42, 42, 42, 0.8) 0%, rgba(68, 68, 68, 0.8) 18.58%, rgba(255, 255, 255, 0) 100%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.HeroImage-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.HeroImage-data {
+    --w: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    padding: .75rem 1.25rem;
+    gap: .75rem;
+    max-width: var(--max-w);
+    width: var(--w);
+}
+
+.HeroImage-user {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    height: 100%;
+}
+
+.HeroImage-username {
+    font-weight: 600;
+}
+
+.HeroImage-date {
+    font-size: .75rem;
+}
+
+.HeroImage-avatar {
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: .5rem;
+}
+
+.HeroImage-title {
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    text-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
+}
+
+.HeroImage-similar {
+    --w: 100%;
+    width: var(--w);
+    max-width: var(--max-w);;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 1.25rem;
+    left: calc(50% - var(--w) / 2);
+}
+
+.HeroImage-similar-container {
+    padding: .85rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(32px);
+    border-radius: .85rem;
+    display: flex;
+    gap: .85rem;
+    height: 100%;
+}
+
+.HeroImage-item {
+    border-radius: .5rem;
+    aspect-ratio: 1/1;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+
+    & img {
+        filter: grayscale(1);
+        transition: transform .4s ease-in-out, filter .5s ease;
+    }
+
+    &:hover img {
+        transform: scale(1.2);
+        filter: grayscale(0);
+    }
+}
+.HeroImage-item.active {
+    border: 2px solid white;
+    & img {
+        filter: none;
+    }
+}
 /* ==== TABLET ==== */
 @media (min-width: 768px) {
     /* --- class helpers --- */
@@ -565,6 +701,22 @@ button:active , .btn:active {
         box-shadow: none;
     }
 
+    /* ===== HOME =====*/
+    .HeroImage-data {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin: auto;
+        padding: .75rem 1px;
+    }
+
+    .HeroImage-item {
+        aspect-ratio: 2/1;
+    }
+
+    .HeroImage-similar, .HeroImage-data {
+        --w: 80%;
+    }
+
 }
 
 /* ==== DESKTOP ==== */
@@ -592,5 +744,15 @@ button:active , .btn:active {
         transform: rotate(8deg);
         right: 10px;
         left: auto;
+    }
+
+    /* ==== HOME ==== */
+    .HeroImage-data,
+    .HeroImage-similar {
+        --w: 100%;
+    }
+
+    .HeroImage-similar {
+        left: calc(50% - var(--max-w) / 2)
     }
 }
