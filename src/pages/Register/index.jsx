@@ -18,7 +18,7 @@ function Register() {
 
   const onSubmit = (data) => {
     signUp({ ...data }).then((response) => {
-      signIn({ ...data });
+      signIn({ ...response });
       navigate("/");
     });
   };
