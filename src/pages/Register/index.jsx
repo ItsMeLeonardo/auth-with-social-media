@@ -2,25 +2,52 @@ import { Link } from "react-router-dom";
 import FormLayout from "../../components/Form/FormLayout";
 import FormField from "../../components/Form/FormField";
 import Back from "../../components/Link/Back";
+import { useForm } from "react-hook-form";
 
 function Register() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Back to="/" />
       <FormLayout title="Sign in">
         <section className="Login-row">
-          <form className="Form">
-            <FormField type="text" placeholder="full name" label="Name" />
-            <FormField type="text" placeholder="username" label="Username" />
+          <form className="Form" onSubmit={handleSubmit(onSubmit)}>
+            <FormField
+              type="text"
+              placeholder="full name"
+              label="Name"
+              register={register("name", { required: true })}
+              errorType={errors?.name?.type}
+            />
+            <FormField
+              type="text"
+              placeholder="username"
+              label="Username"
+              register={register("username", { required: true, minLength: 5 })}
+              errorType={errors?.username?.type}
+            />
             <FormField
               type="email"
               placeholder="example@gmail.com"
               label="Email"
+              register={register("email", { required: true })}
+              errorType={errors?.email?.type}
             />
             <FormField
               type="password"
               placeholder="********"
               label="Password"
+              register={register("password", { required: true, minLength: 5 })}
+              errorType={errors?.password?.type}
             />
 
             <FormField type="submit" label="Create account" />
