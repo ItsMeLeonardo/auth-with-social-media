@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import FormLayout from "../../components/Form/FormLayout";
 import FormField from "../../components/Form/FormField";
 import Back from "../../components/Link/Back";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../Hooks/useAuth";
 
 function Login() {
   const {
@@ -12,9 +13,13 @@ function Login() {
     register,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+
+  const { signIn } = useAuth();
 
   const onSubmit = (data) => {
-    console.log({ data });
+    signIn({ ...data });
+    navigate("/");
   };
 
   return (
@@ -57,15 +62,6 @@ function Login() {
             </div>
 
             <FormField type="submit" label="Submit" />
-
-            <div className="Form-aside">
-              <a href="#" className="Form-label Link">
-                Privacity Policy
-              </a>
-              <a href="#" className="Form-label Link">
-                Terms and coditions
-              </a>
-            </div>
           </form>
         </section>
 

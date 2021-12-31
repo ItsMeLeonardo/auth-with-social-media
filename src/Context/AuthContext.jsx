@@ -5,20 +5,20 @@ const AuthContext = React.createContext({});
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const SignIn = useCallback(({ email, password }) => {
+  const signIn = useCallback(({ email, password }) => {
     if (email && password) {
       setUser({ email, password });
     }
   }, []);
 
-  const SignOut = useCallback(() => {
+  const signOut = useCallback(() => {
     setUser(null);
   }, []);
 
   const value = {
     user,
-    SignIn,
-    SignOut,
+    signIn,
+    signOut,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

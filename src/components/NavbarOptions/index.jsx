@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NavbarOptions({ userIsAuth = false } = {}) {
+function NavbarOptions({ userIsAuth = false, logout } = {}) {
   if (!userIsAuth) {
     return (
       <aside className="Tooltip">
@@ -20,7 +20,9 @@ function NavbarOptions({ userIsAuth = false } = {}) {
         <button className="Tooltip-button">Account</button>
       </Link>
       <Link to="/login">
-        <button className="Tooltip-button">Logout</button>
+        <button className="Tooltip-button" onClick={logout}>
+          Logout
+        </button>
       </Link>
     </aside>
   );

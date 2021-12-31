@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import FormLayout from "../../components/Form/FormLayout";
 import FormField from "../../components/Form/FormField";
 import Back from "../../components/Link/Back";
-import { useForm } from "react-hook-form";
+import { register as signUp } from "../../Services/user";
+import { useAuth } from "../../Hooks/useAuth";
 
 function Register() {
   const {
@@ -10,9 +12,15 @@ function Register() {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const navigate = useNavigate();
+
+  const { signIn } = useAuth();
 
   const onSubmit = (data) => {
-    console.log(data);
+    signUp({ ...data }).then((response) => {
+      signIn({ ...data });
+      navigate("/");
+    });
   };
 
   return (
