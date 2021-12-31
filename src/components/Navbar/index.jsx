@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import "../../styles/index.pcss";
 import NavbarOptions from "../NavbarOptions";
+import { useAuth } from "../../Hooks/useAuth";
+
+const DEFAULT_AVATAR =
+  "https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
 
 function Navbar() {
+  const { user } = useAuth();
   return (
     <nav className="Navbar">
       <ul className="Navbar-list">
@@ -16,13 +20,12 @@ function Navbar() {
         </li>
         <li className="Navbar-item profile">
           <figure className="Navbar-link">
-            <figcaption className="md">username</figcaption>
-            <img
-              src="https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-              alt="name avatar"
-            />
+            <figcaption className="md">
+              {user ? user?.username : "Star now"}
+            </figcaption>
+            <img src={user ? user?.avatar : DEFAULT_AVATAR} alt="name avatar" />
           </figure>
-          <NavbarOptions userIsAuth />
+          <NavbarOptions userIsAuth={user} />
         </li>
       </ul>
     </nav>
