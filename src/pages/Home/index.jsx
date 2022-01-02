@@ -1,8 +1,10 @@
 import { useImages } from "../../Hooks/useImages";
 import { useEffect, useState } from "react";
 import { formatDate } from "../../Utils/formatDate";
+import useEmblaCarousel from "embla-carousel-react";
 
 function Home() {
+  const [emblaRef] = useEmblaCarousel();
   const { images } = useImages({});
   const [picture, setPicture] = useState();
 
@@ -36,12 +38,12 @@ function Home() {
         className="HeroImage-body"
       />
 
-      <footer className="HeroImage-similar">
-        <ul className="HeroImage-similar-container">
+      <footer className="HeroImage-similar embla" ref={emblaRef}>
+        <ul className="HeroImage-similar-container embla__container">
           {images.map((image) => (
             <li
               key={image?.id}
-              className={`HeroImage-item ${
+              className={`HeroImage-item embla__slide ${
                 image?.id === picture?.id ? "active" : ""
               }`}
             >

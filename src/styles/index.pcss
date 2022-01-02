@@ -560,21 +560,20 @@ button:active, .btn:active {
 }
 
 .HeroImage-similar {
-    --w: 100%;
+    --w: 80%;
     width: var(--w);
-    max-width: var(--max-w);;
     height: 100px;
     overflow: hidden;
     position: absolute;
     bottom: 1.25rem;
     left: calc(50% - var(--w) / 2);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(32px);
+    border-radius: .85rem;
 }
 
 .HeroImage-similar-container {
     padding: .85rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(32px);
-    border-radius: .85rem;
     display: flex;
     gap: .85rem;
     height: 100%;
@@ -585,7 +584,6 @@ button:active, .btn:active {
     aspect-ratio: 1/1;
     height: 100%;
     cursor: pointer;
-    overflow: hidden;
 
     & img {
         filter: grayscale(1);
@@ -593,12 +591,13 @@ button:active, .btn:active {
     }
 
     &:hover img {
-        transform: scale(1.2);
+        transform: scale(1.15);
         filter: grayscale(0);
     }
 }
 .HeroImage-item.active {
     border: 2px solid white;
+    pointer-events: none;
     & img {
         filter: none;
     }
@@ -766,12 +765,8 @@ button:active, .btn:active {
     }
 
     /* ==== HOME ==== */
-    .HeroImage-data,
-    .HeroImage-similar {
+    .HeroImage-data{
         --w: 100%;
     }
 
-    .HeroImage-similar {
-        left: calc(50% - var(--max-w) / 2)
-    }
 }

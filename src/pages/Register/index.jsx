@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import FormLayout from "../../components/Form/FormLayout";
 import FormField from "../../components/Form/FormField";
 import Back from "../../components/Link/Back";
-import { register as signUp } from "../../Services/user";
 import { useAuth } from "../../Hooks/useAuth";
 
 function Register() {
@@ -17,10 +16,7 @@ function Register() {
   const { signIn } = useAuth();
 
   const onSubmit = (data) => {
-    signUp({ ...data }).then((response) => {
-      signIn({ ...response });
-      navigate("/");
-    });
+    signIn({ user: data }, () => navigate("/"));
   };
 
   return (

@@ -15,11 +15,10 @@ function Login() {
   } = useForm();
   const navigate = useNavigate();
 
-  const { signIn } = useAuth();
+  const { signUp } = useAuth();
 
   const onSubmit = (data) => {
-    signIn({ ...data });
-    navigate("/");
+    signUp({ ...data }, () => navigate("/"));
   };
 
   return (
