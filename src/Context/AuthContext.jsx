@@ -21,7 +21,7 @@ function AuthProvider({ children }) {
         callback();
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err);
         setTimeout(() => setError(null), 4000);
       })
       .finally(() => setLoading(false));
@@ -54,6 +54,10 @@ function AuthProvider({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
+  const signUpWithSocialMedia = useCallback(({ email, id }) => {
+    setUser({ email, id });
+  }, []);
+
   const value = {
     user,
     signIn,
@@ -61,6 +65,7 @@ function AuthProvider({ children }) {
     signUp,
     loading,
     error,
+    signUpWithSocialMedia,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

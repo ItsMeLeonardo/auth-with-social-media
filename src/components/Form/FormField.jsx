@@ -13,7 +13,6 @@ const errorMessages = {
  * @param {String} errorType the type error from react-form-hook
  * @returns {JSX.Element}
  */
-
 function FormField({ type, placeholder, label, register, errorType } = {}) {
   if (type === "submit") {
     return (
@@ -21,6 +20,7 @@ function FormField({ type, placeholder, label, register, errorType } = {}) {
         <button className="Form-button" type="submit">
           {label || "Submit"}
         </button>
+        {errorType && <span className="Form-errorMessage">{errorType}</span>}
       </div>
     );
   }
@@ -54,5 +54,6 @@ function FormField({ type, placeholder, label, register, errorType } = {}) {
     </div>
   );
 }
+
 // memo with errorType
 export default FormField;

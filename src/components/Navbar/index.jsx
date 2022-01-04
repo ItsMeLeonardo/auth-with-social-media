@@ -3,7 +3,7 @@ import NavbarOptions from "../NavbarOptions";
 import { useAuth } from "../../Hooks/useAuth";
 
 const DEFAULT_AVATAR =
-  "https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
+  "https://images.unsplash.com/photo-1641160858304-6aded85fa2c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
 
 function Navbar() {
   const { user, signOut } = useAuth();
@@ -16,14 +16,15 @@ function Navbar() {
           </li>
         </Link>
         <li className="Navbar-item section-name">
+          {/*TODO: make dynamic this*/}
           <header className="Navbar-link">PROFILE</header>
         </li>
         <li className="Navbar-item profile">
           <figure className="Navbar-link">
             <figcaption className="md">
-              {user ? user?.email : "Star now"}
+              {user ? user?.username || user?.email : "Star now"}
             </figcaption>
-            <img src={user ? user?.avatar : DEFAULT_AVATAR} alt="name avatar" />
+            <img src={user?.avatar || DEFAULT_AVATAR} alt="name avatar" />
           </figure>
 
           <NavbarOptions userIsAuth={user} logout={signOut} />

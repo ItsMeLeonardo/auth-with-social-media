@@ -147,7 +147,13 @@ button:active, .btn:active {
 
     & .Navbar-link {
         width: 2rem;
-        background: var(--main-gradient)
+        background: var(--main-gradient);
+
+        & figcaption {
+            width: 20ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 }
 
@@ -170,11 +176,11 @@ button:active, .btn:active {
 
 .Tooltip {
     position: absolute;
-    aspect-ratio: 2/1;
-    width: 130px;
+    min-width: 130px;
+    width: 100%;
     padding: 1rem;
     left: -6rem;
-    bottom: -6.75rem;
+    bottom: -8rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -219,10 +225,11 @@ button:active, .btn:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem .75rem;
     background: var(--white);
     transition: box-shadow var(--transition);
     border-radius: .5rem;
+    width: 100%;
+    padding: 0.75rem;
 }
 
 .Tooltip-button:hover {

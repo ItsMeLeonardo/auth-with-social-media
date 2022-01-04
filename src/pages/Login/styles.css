@@ -112,6 +112,7 @@
     border-radius: 50%;
     cursor: pointer;
     transition: var(--transition) box-shadow, var(--transition) background;
+    display: block;
 }
 
 .Social-item i {

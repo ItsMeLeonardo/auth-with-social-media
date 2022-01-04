@@ -1,17 +1,29 @@
+import {
+  facebookAuthUrl,
+  twitterAuthUrl,
+  googleAuthUrl,
+} from "../../Services/authWithSocialMedia";
+
 function FormLayout({ title, children }) {
   return (
     <main className="Login">
       <h1 className="Login-title">{title}</h1>
       <section className="Login-row">
         <ul className="Social-content">
-          <li className="Social-item facebook">
-            <i className="gg-facebook"></i>
+          <li className="facebook">
+            <a className="Social-item" href={facebookAuthUrl}>
+              <i className="gg-facebook" />
+            </a>
           </li>
-          <li className="Social-item twitter">
-            <i className="gg-instagram"></i>
+          <li className="twitter">
+            <a className="Social-item" href={twitterAuthUrl}>
+              <i className="gg-instagram" />
+            </a>
           </li>
-          <li className="Social-item google">
-            <i className="gg-google"></i>
+          <li className="google">
+            <a className="Social-item" href={googleAuthUrl}>
+              <i className="gg-google" />
+            </a>
           </li>
         </ul>
       </section>

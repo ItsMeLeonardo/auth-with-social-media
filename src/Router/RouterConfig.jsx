@@ -6,6 +6,8 @@ import MyAccount from "../pages/MyAccount";
 import EditAccount from "../pages/EditAccount";
 import Home from "../pages/Home";
 import { AuthProvider } from "../Context/AuthContext";
+import NotFound from "../pages/NotFound";
+import AuthSocialMedia from "../pages/AuthSocialMedia";
 
 function RouterConfig() {
   return (
@@ -14,11 +16,13 @@ function RouterConfig() {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
-            <Route path="profile" element={<MyAccount />} />
+            <Route path="profile/:userId" element={<MyAccount />} />
             <Route path="profile/edit" element={<EditAccount />} />
           </Route>
+          <Route path="/auth/social_media" element={<AuthSocialMedia />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

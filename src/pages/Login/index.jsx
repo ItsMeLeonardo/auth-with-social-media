@@ -15,7 +15,7 @@ function Login() {
   } = useForm();
   const navigate = useNavigate();
 
-  const { signUp } = useAuth();
+  const { signUp, error } = useAuth();
 
   const onSubmit = (data) => {
     signUp({ ...data }, () => navigate("/"));
@@ -43,10 +43,7 @@ function Login() {
             />
 
             <div className="Form-aside">
-              <label
-                className="Form-label flex-center gap-1"
-                htmlFor="remenber"
-              >
+              <label className="Form-label gap-1" htmlFor="remenber">
                 <input
                   className="Form-checkbox"
                   type="checkbox"
@@ -60,7 +57,7 @@ function Login() {
               </a>
             </div>
 
-            <FormField type="submit" label="Submit" />
+            <FormField type="submit" label="Submit" errorType={error} />
           </form>
         </section>
 
