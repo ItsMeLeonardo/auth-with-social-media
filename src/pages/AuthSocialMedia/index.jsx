@@ -9,13 +9,12 @@ function AuthSocialMedia() {
   const { signUpWithSocialMedia } = useAuth();
 
   useEffect(() => {
-    const userId = searchParams.get("token");
+    const token = searchParams.get("token");
 
-    const content = extractUser(userId);
-    console.log({ content });
+    const content = extractUser(token);
 
     setTimeout(() => {
-      signUpWithSocialMedia({ ...content });
+      signUpWithSocialMedia({ ...content, token });
       navigate("/");
     }, 2000);
   }, []);

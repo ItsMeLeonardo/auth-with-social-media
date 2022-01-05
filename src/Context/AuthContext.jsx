@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from "react";
 import { login, register } from "../Services/user";
+import { useSessionStorage } from "../Hooks/useSessionStorage";
 
 const AuthContext = React.createContext({});
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [sessionUser, saveUser] = useSessionStorage("user");
+  const [user, setUser] = useState(sessionUser);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,6 +20,7 @@ function AuthProvider({ children }) {
     login({ email, password })
       .then((data) => {
         setUser(data);
+        saveUser(data);
         callback();
       })
       .catch((err) => {
@@ -54,8 +57,9 @@ function AuthProvider({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
-  const signUpWithSocialMedia = useCallback(({ email, id }) => {
-    setUser({ email, id });
+  const signUpWithSocialMedia = useCallback(({ email, id, token }) => {
+    setUser({ email, id, token });
+    saveUser({ email, id, token });
   }, []);
 
   const value = {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-function NavbarOptions({ userIsAuth = false, logout } = {}) {
-  if (!userIsAuth) {
+function NavbarOptions({ user = null, logout } = {}) {
+  if (!user) {
     return (
       <aside className="Tooltip">
         <Link to="/login">
@@ -16,7 +16,7 @@ function NavbarOptions({ userIsAuth = false, logout } = {}) {
 
   return (
     <aside className="Tooltip">
-      <Link to="/profile">
+      <Link to={`/profile/${user.id}`}>
         <button className="Tooltip-button">Account</button>
       </Link>
       <Link to="/login">

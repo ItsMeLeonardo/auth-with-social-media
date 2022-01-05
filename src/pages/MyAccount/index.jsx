@@ -1,18 +1,31 @@
-import ProfileItem from "../../components/ProfileItem";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ProfileItem from "../../components/ProfileItem";
 import RequireAuth from "../../components/RequireAuth";
+import { useAuth } from "../../Hooks/useAuth";
+import { getUser } from "../../Services/user";
 
 function MyAccount() {
+  const { user } = useAuth();
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    getUser({ token: user.token, userId: user.id })
+      .then((data) => {
+        console.log({ data });
+        setUserData(data);
+      })
+      .catch((err) => console.log({ err }));
+  }, []);
+
   return (
     <RequireAuth>
       <main className="Profile">
         <section className="Profile-header">
           <figure className="Profile-avatar">
-            <img
-              src="https://images.unsplash.com/photo-1558473840-767aaeeeae45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFuaW1lJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-              alt="name avatar"
-            />
-            <figcaption className="Profile-avatar-name">Name</figcaption>
+            <img src={userData.avatar} alt={`avatar of ${userData.name}`} />
+            <figcaption className="Profile-avatar-name">
+              {userData.name}
+            </figcaption>
           </figure>
           <Link to="/profile/edit" className="Profile-edit-mobile">
             <button className="btn btn-icon">🖊</button>
@@ -30,10 +43,13 @@ function MyAccount() {
                 <button className="Profile-edit-btn">Edit</button>
               </Link>
             </li>
-            <ProfileItem title="Username" data="Anna 2022" />
-            <ProfileItem title="Full name" data="Anna Doe" />
-            <ProfileItem title="Email" data="Anna@gmail.com" />
-            <ProfileItem title="Username" data="Anna 2022" />
+            <ProfileItem title="Username" data={userData?.username} />
+            <ProfileItem title="Full name" data={userData.name} />
+            <ProfileItem title="Email" data={userData.email} />
+            <ProfileItem
+              title="Phone"
+              data={userData?.phone || "add your phone number"}
+            />
             <ProfileItem title="Password" data="********" />
           </ul>
         </section>

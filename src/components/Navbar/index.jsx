@@ -27,7 +27,7 @@ function Navbar() {
             <img src={user?.avatar || DEFAULT_AVATAR} alt="name avatar" />
           </figure>
 
-          <NavbarOptions userIsAuth={user} logout={signOut} />
+          <NavbarOptions user={user} logout={signOut} />
         </li>
       </ul>
     </nav>
