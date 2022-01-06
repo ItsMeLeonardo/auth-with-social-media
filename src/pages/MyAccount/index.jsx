@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileItem from "../../components/ProfileItem";
 import RequireAuth from "../../components/RequireAuth";
@@ -6,26 +6,26 @@ import { useAuth } from "../../Hooks/useAuth";
 import { getUser } from "../../Services/user";
 
 function MyAccount() {
-  const { user } = useAuth();
-  const [userData, setUserData] = useState(null);
+  const { user, updateUserData } = useAuth();
   useEffect(() => {
-    getUser({ token: user.token, userId: user.id })
+    getUser({ userId: user.id })
       .then((data) => {
-        console.log({ data });
-        setUserData(data);
+        updateUserData({ user: data });
       })
       .catch((err) => console.log({ err }));
   }, []);
+
+  if (!user.avatar) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <RequireAuth>
       <main className="Profile">
         <section className="Profile-header">
           <figure className="Profile-avatar">
-            <img src={userData.avatar} alt={`avatar of ${userData.name}`} />
-            <figcaption className="Profile-avatar-name">
-              {userData.name}
-            </figcaption>
+            <img src={user.avatar} alt={`avatar of ${user.name}`} />
+            <figcaption className="Profile-avatar-name">{user.name}</figcaption>
           </figure>
           <Link to="/profile/edit" className="Profile-edit-mobile">
             <button className="btn btn-icon">🖊</button>
@@ -43,12 +43,12 @@ function MyAccount() {
                 <button className="Profile-edit-btn">Edit</button>
               </Link>
             </li>
-            <ProfileItem title="Username" data={userData?.username} />
-            <ProfileItem title="Full name" data={userData.name} />
-            <ProfileItem title="Email" data={userData.email} />
+            <ProfileItem title="Username" data={user?.username} />
+            <ProfileItem title="Full name" data={user.name} />
+            <ProfileItem title="Email" data={user.email} />
             <ProfileItem
               title="Phone"
-              data={userData?.phone || "add your phone number"}
+              data={user?.phone || "add your phone number"}
             />
             <ProfileItem title="Password" data="********" />
           </ul>

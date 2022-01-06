@@ -6,6 +6,7 @@ const AuthContext = React.createContext({});
 
 function AuthProvider({ children }) {
   const [sessionUser, saveUser] = useSessionStorage("user");
+  const [, saveToken] = useSessionStorage("token");
   const [user, setUser] = useState(sessionUser);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,9 +19,10 @@ function AuthProvider({ children }) {
   const signUp = useCallback(({ email, password }, callback) => {
     setLoading(true);
     login({ email, password })
-      .then((data) => {
-        setUser(data);
-        saveUser(data);
+      .then(({ user, token }) => {
+        setUser(user);
+        saveUser(user);
+        saveToken(token);
         callback();
       })
       .catch((err) => {
@@ -58,8 +60,14 @@ function AuthProvider({ children }) {
   }, []);
 
   const signUpWithSocialMedia = useCallback(({ email, id, token }) => {
-    setUser({ email, id, token });
-    saveUser({ email, id, token });
+    setUser({ email, id });
+    saveUser({ email, id });
+    saveToken(token);
+  }, []);
+
+  const updateUserData = useCallback(({ user }) => {
+    setUser((prevState) => ({ ...prevState, ...user }));
+    saveUser(user);
   }, []);
 
   const value = {
@@ -70,6 +78,7 @@ function AuthProvider({ children }) {
     loading,
     error,
     signUpWithSocialMedia,
+    updateUserData,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

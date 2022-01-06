@@ -29,6 +29,7 @@ function Register() {
               type="text"
               placeholder="full name"
               label="Name"
+              required
               register={register("name", { required: true })}
               errorType={errors?.name?.type}
             />
@@ -36,6 +37,7 @@ function Register() {
               type="text"
               placeholder="username"
               label="Username"
+              required
               register={register("username", { required: true, minLength: 5 })}
               errorType={errors?.username?.type}
             />
@@ -43,6 +45,7 @@ function Register() {
               type="email"
               placeholder="example@gmail.com"
               label="Email"
+              required
               register={register("email", { required: true })}
               errorType={errors?.email?.type}
             />
@@ -50,6 +53,7 @@ function Register() {
               type="password"
               placeholder="********"
               label="Password"
+              required
               register={register("password", { required: true, minLength: 5 })}
               errorType={errors?.password?.type}
             />

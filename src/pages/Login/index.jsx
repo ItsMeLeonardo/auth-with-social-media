@@ -31,6 +31,7 @@ function Login() {
               type="email"
               placeholder="example@gmail.com"
               label="Email"
+              required
               register={register("email", { required: true })}
               errorType={errors?.email?.type}
             />
@@ -38,6 +39,7 @@ function Login() {
               type="password"
               placeholder="********"
               label="Password"
+              required
               register={register("password", { required: true })}
               errorType={errors?.password?.type}
             />
