@@ -26,8 +26,7 @@ function AuthProvider({ children }) {
         callback();
       })
       .catch((err) => {
-        console.log({ err });
-        setError(err);
+        setError(err.response.data.error);
         setTimeout(() => setError(null), 4000);
       })
       .finally(() => setLoading(false));
@@ -39,6 +38,7 @@ function AuthProvider({ children }) {
    */
   const signOut = useCallback(() => {
     setUser(null);
+    sessionStorage.clear();
   }, []);
 
   /**
