@@ -4,6 +4,7 @@ import ProfileItem from "../../components/ProfileItem";
 import RequireAuth from "../../components/RequireAuth";
 import { useAuth } from "../../Hooks/useAuth";
 import { getUser } from "../../Services/user";
+import Edit from "../../icons/Edit";
 
 function MyAccount() {
   const { user, updateUserData } = useAuth();
@@ -28,7 +29,9 @@ function MyAccount() {
             <figcaption className="Profile-avatar-name">{user.name}</figcaption>
           </figure>
           <Link to="/profile/edit" className="Profile-edit-mobile">
-            <button className="btn btn-icon">🖊</button>
+            <button className="btn btn-icon">
+              <Edit className="stroke-white" />
+            </button>
           </Link>
         </section>
 

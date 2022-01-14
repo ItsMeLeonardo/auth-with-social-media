@@ -5,6 +5,7 @@ import { useAuth } from "../../Hooks/useAuth";
 import { editUserData } from "../../Services/user";
 import RequireAuth from "../../components/RequireAuth";
 import FormField from "../../components/Form/FormField";
+import Image from "../../icons/Image";
 
 function EditAccount() {
   const { register, handleSubmit } = useForm();
@@ -46,7 +47,7 @@ function EditAccount() {
           <picture className="Avatar">
             <img src={avatar} alt="avatar" />
             <label className="Avatar-edit btn btn-icon" htmlFor="avatar">
-              📷
+              <Image className="stroke-white" />
             </label>
           </picture>
         </section>
@@ -92,6 +93,7 @@ function EditAccount() {
               type="tel"
               label="phone"
               placeholder="phone number"
+              defaultValue={user.phone}
               register={register("phone")}
             />
             <FormField

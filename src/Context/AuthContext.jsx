@@ -26,6 +26,7 @@ function AuthProvider({ children }) {
         callback();
       })
       .catch((err) => {
+        console.log({ err });
         setError(err);
         setTimeout(() => setError(null), 4000);
       })

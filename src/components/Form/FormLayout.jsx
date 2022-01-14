@@ -17,7 +17,7 @@ function FormLayout({ title, children }) {
           </li>
           <li className="twitter">
             <a className="Social-item" href={twitterAuthUrl}>
-              <i className="gg-instagram" />
+              <i className="gg-twitter" />
             </a>
           </li>
           <li className="google">

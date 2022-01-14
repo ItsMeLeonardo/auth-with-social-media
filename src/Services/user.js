@@ -13,7 +13,7 @@ const getToken = () => {
 };
 
 /**
- * Create a new user in DB
+ * @desc Create a new user in DB
  * @param user {Object}
  * @returns {Promise<any>}
  */
@@ -23,34 +23,40 @@ export const register = async ({ user }) => {
 };
 
 /**
- * auth user with email and password from the form
+ * @desc auth user with email and password from the form
  * @param {String} email
  * @param {String} password
  * @returns {Promise<any>}
  */
 export const login = async ({ email, password }) => {
   const response = await axios.post(`${BASE_URL}/auth`, { email, password });
-  return response.data;
+  const data = response.data;
+  console.log({ email, password });
+  console.log({ data });
+  if (data.error) {
+    throw new Error(data.error);
+  }
+
+  return data;
 };
 
 /**
- * get the data of user
- * @param {String} userId
+ * @desc get the data of user
  * @returns {Promise<any>}
  */
-export const getUser = async ({ userId }) => {
+export const getUser = async () => {
   const token = getToken();
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(`${BASE_URL}/users/${userId}`, config);
+  const response = await axios.get(`${BASE_URL}/users`, config);
   return response.data;
 };
 
 /**
- * Update the data of user
+ * @desc Update the data of user
  * @param {FormData} user user with data to edit
  * @returns {Promise<any>}
  */
